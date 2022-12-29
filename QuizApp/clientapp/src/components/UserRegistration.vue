@@ -50,12 +50,11 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <button type="submit"
-                                            class="btn btn-primary btn-block btn-lg text-body">Register</button>
+                                        <button type="submit" class="btn btn-primary btn-lg">Register</button>
                                     </div>
 
-                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
-                                            class="fw-bold text-body"><u>Login here</u></a></p>
+                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a
+                                            href="/login" class="fw-bold text-body"><u>Login here</u></a></p>
 
                                 </form>
 

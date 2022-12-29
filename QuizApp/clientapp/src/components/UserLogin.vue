@@ -24,7 +24,7 @@
                                         <button type="submit" class="btn btn-primary btn-lg">Log in</button>
                                     </div>
 
-                                    <p class="text-center text-muted mt-5 mb-0">Need an account? <a href="#!"
+                                    <p class="text-center text-muted mt-5 mb-0">Need an account? <a href="/signup"
                                             class="fw-bold text-body"><u>Sign up here</u></a></p>
                                 </form>
                             </div>
