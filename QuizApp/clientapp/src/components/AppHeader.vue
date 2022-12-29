@@ -1,10 +1,13 @@
 <template>
     <nav class="navbar navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">{{ Title }}</a>
+        <a class="navbar-brand" href="/">{{ Title }}</a>
         <div class="collapse navbar-collapse" id="navbarNav" v-if="this.$store.state.isAuthenticated">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/options">Options</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" @submit.prevent="logout">
@@ -24,6 +27,9 @@ export default {
         async logout() {
             await fetch('api/Account/logout');
             this.$store.commit("setAuthentication", false);
+            this.$store.commit("setLoggedUserEmail", '');
+            localStorage.isAuthenticated = false;
+            localStorage.loggedUserEmail = '';
             this.$router.push({ name: 'Login' });
         }
     }

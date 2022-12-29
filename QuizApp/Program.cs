@@ -42,7 +42,7 @@ IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
 builder.Services.AddScoped<IUserRepository<ApplicationUser>, UserRepository>();
-builder.Services.AddScoped<IOptionRepository, OptionRepository>();
+builder.Services.AddScoped<IRepository<Option>, OptionRepository>();
 
 var app = builder.Build();
 

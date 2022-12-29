@@ -11,8 +11,8 @@ namespace QuizApp.Controllers
     [ApiController]
     public class OptionsController : ControllerBase
     {
-        private IOptionRepository _repository;
-        public OptionsController(OptionRepository repository) 
+        private IRepository<Option> _repository;
+        public OptionsController(IRepository<Option> repository) 
         {
             _repository = repository;
         }
@@ -40,13 +40,8 @@ namespace QuizApp.Controllers
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult> Post([FromBody] string name)
+        public async Task<ActionResult> Post([FromBody]Option option)
         {
-            var option = new Option 
-            { 
-                Name = name 
-            };
-
             return Ok(await _repository.Insert(option));
         }
 

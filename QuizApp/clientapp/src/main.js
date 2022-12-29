@@ -5,12 +5,15 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AppDashboard from "./components/AppDashboard.vue"
 import UserRegistration from "./components/UserRegistration.vue"
 import UserLogin from "./components/UserLogin.vue"
+import QuestionOptions from "./components/QuestionOptions.vue"
+import OptionsForm from "./components/OptionsForm.vue"
 
 const store = createStore({
     state() {
         return {
             isAuthenticated: false,
-            loggedUserEmail: ''
+            loggedUserEmail: '',
+            option: {}
         }
     },
     mutations: {
@@ -19,6 +22,9 @@ const store = createStore({
         },
         setLoggedUserEmail(state, email) {
             state.loggedUserEmail = email;
+        },
+        setOption(state, option) {
+            state.option = option;
         }
     }
 })
@@ -26,7 +32,9 @@ const store = createStore({
 const routes = [
     { path: '/', component: AppDashboard, name: 'Dashboard' },
     { path: '/signup', component: UserRegistration, name: 'SignUp' },
-    { path: '/login', component: UserLogin, name: 'Login' }
+    { path: '/login', component: UserLogin, name: 'Login' },
+    { path: '/options', component: QuestionOptions, name: 'Option' },
+    { path: '/options-form', component: OptionsForm, name: 'OptionForm', props: true }
 ]
 
 const router = createRouter({
@@ -35,7 +43,11 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
-    console.log(store.state.isAuthenticated);
+    if (to.name !== 'Login' && to.name !== 'SignUp') {
+        store.commit("setAuthentication", localStorage.isAuthenticated);
+        store.commit("setLoggedUserEmail", localStorage.loggedUserEmail);
+    }
+
     if (!store.state.isAuthenticated && to.name !== 'Login' && to.name !== 'SignUp') {
         return { name: 'Login' }
     }

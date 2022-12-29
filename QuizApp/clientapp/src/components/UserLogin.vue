@@ -65,6 +65,8 @@ export default {
             if (responseResult.succeeded) {
                 this.$store.commit("setAuthentication", true);
                 this.$store.commit("setLoggedUserEmail", this.email);
+                localStorage.isAuthenticated = true;
+                localStorage.loggedUserEmail = this.email;
                 this.$router.push({ name: 'Dashboard' });
             }
 
