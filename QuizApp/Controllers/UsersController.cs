@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using QuizApp.Data;
 using QuizApp.Dtos;
@@ -42,7 +43,7 @@ namespace QuizApp.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Create([FromBody] UserCreateDto dtoModel)
+        public async Task<ActionResult<IdentityResult>> Create([FromBody] UserCreateDto dtoModel)
         {
             var result = await _repository.Insert(dtoModel);
 

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using QuizApp.Data;
 using QuizApp.Dtos;
 using QuizApp.Entities;
+using QuizApp.Utils;
 
 namespace QuizApp.Respositories
 {
@@ -35,7 +36,9 @@ namespace QuizApp.Respositories
         public async Task<IdentityResult> Insert(UserCreateDto dtoModel)
         {
             ApplicationUser user = _mapper.Map<ApplicationUser>(dtoModel);
-            return await _userManager.CreateAsync(user, dtoModel.Password);
+            var identityResult = await _userManager.CreateAsync(user, dtoModel.Password);
+            await _userManager.AddToRoleAsync(user, Constants.Roles.Participant);
+            return identityResult;
         }
     }
 }

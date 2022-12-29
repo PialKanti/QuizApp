@@ -90,7 +90,7 @@ export default {
                 password: this.password
             });
 
-            await fetch('api/Users', {
+            const response = await fetch('api/Users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -98,7 +98,13 @@ export default {
                 body: data
             });
 
+            const responseResult = await response.json();
+
             this.$refs.userRegistrationForm.reset();
+
+            if (responseResult.succeeded) {
+                this.$router.push({ name: 'Login' });
+            }
         }
     }
 }
