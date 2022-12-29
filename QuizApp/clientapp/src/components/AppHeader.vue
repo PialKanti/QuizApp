@@ -7,7 +7,7 @@
                     <a class="nav-link" href="#">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/options">Options</a>
+                    <a class="nav-link" href="/question-form">Questions</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" @submit.prevent="logout">

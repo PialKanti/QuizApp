@@ -7,6 +7,7 @@ import UserRegistration from "./components/UserRegistration.vue"
 import UserLogin from "./components/UserLogin.vue"
 import QuestionOptions from "./components/QuestionOptions.vue"
 import OptionsForm from "./components/OptionsForm.vue"
+import CreateQuestion from "./components/CreateQuestion.vue"
 
 const store = createStore({
     state() {
@@ -34,7 +35,8 @@ const routes = [
     { path: '/signup', component: UserRegistration, name: 'SignUp' },
     { path: '/login', component: UserLogin, name: 'Login' },
     { path: '/options', component: QuestionOptions, name: 'Option' },
-    { path: '/options-form', component: OptionsForm, name: 'OptionForm', props: true }
+    { path: '/options-form', component: OptionsForm, name: 'OptionForm' },
+    { path: '/question-form', component: CreateQuestion, name: 'QuestionForm' }
 ]
 
 const router = createRouter({

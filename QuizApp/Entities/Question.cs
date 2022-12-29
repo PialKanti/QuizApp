@@ -12,6 +12,6 @@ namespace QuizApp.Entities
         [Column("TimeLimit")]
         public int? TimeLimitInSeconds { get; set; }
         [Required]
-        public List<Option>? Options { get; set; }
+        public IEnumerable<Option>? Options { get; set; }
     }
 }

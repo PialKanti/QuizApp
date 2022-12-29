@@ -1,13 +1,19 @@
 <template>
-    <div class="row d-flex justify-content-center align-items-center h-100 mt-5">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-            <div class="card" style="border-radius: 15px;">
-                <div class="card-body p-5">
-                    <h4 class="text-uppercase text-center mb-5">Create option</h4>
+    <div class="modal fade" Id="OptionsModalForm" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="OptionFormLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="OptionFormLabel">Create Options</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeButton">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <form ref="optionsForm" @submit.prevent="submitForm">
                         <div class="form-outline mb-4">
-                            <input type="text" id="name" class="form-control form-control-lg" v-model="name" />
                             <label class="form-label" for="name">Name</label>
+                            <input type="text" id="name" class="form-control form-control-lg" v-model="name" />
                         </div>
 
                         <div>
@@ -25,32 +31,34 @@
     data() {
         return {
             title: '',
-            name: '',
-            option: {}
+            name: ''
         }
     },
-    created() {
-        this.option = this.$store.state.option;
-
-    },
+    emits: ['option-added'],
     methods: {
         async submitForm() {
-            const data = JSON.stringify({
-                name: this.name
-            });
+            // const data = JSON.stringify({
+            //     name: this.name
+            // });
 
-            await fetch('api/Options', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: data
-            });
+            // const response = await fetch('api/Options', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: data
+            // });
 
-            this.$router.push({ name: 'Option' });
+            // const option = await response.json();
+
             this.$refs.optionsForm.reset();
+            this.closeModal();
+            this.$emit('option-added', this.name)
 
-        }
+        },
+        closeModal() {
+            document.getElementById('closeButton').click();
+        },
     }
 }
 </script>

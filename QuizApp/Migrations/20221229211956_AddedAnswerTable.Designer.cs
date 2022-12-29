@@ -12,8 +12,8 @@ using QuizApp.Data;
 namespace QuizApp.Migrations
 {
     [DbContext(typeof(QuizAppContext))]
-    [Migration("20221229144540_AddedQuizRelatedTables")]
-    partial class AddedQuizRelatedTables
+    [Migration("20221229211956_AddedAnswerTable")]
+    partial class AddedAnswerTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -258,7 +258,7 @@ namespace QuizApp.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c3472ff3-8610-416a-be5d-571aa3b1259b",
+                            ConcurrencyStamp = "57baf6aa-fefe-40ca-bf78-931a7e0f33f6",
                             Email = "admin@test.com",
                             EmailConfirmed = false,
                             FirstName = "Default",
@@ -266,9 +266,9 @@ namespace QuizApp.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAED+Yn0D5XqRgshB4+7wDcNl+IGuA9yK6WEJbg+se4l3Ap/z1DfhOgtGf1dsqaUhLxw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEkW2nmv7UQKnztmF4McVGhWKwYPe9wZS5oDUPHI4xd1CgnNTPGNOxyIhWHrtreq6Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7dcd4b5a-b324-4f4f-a317-8213c15833ff",
+                            SecurityStamp = "0310cf55-602d-4082-bbef-92a86cd57d1f",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -307,6 +307,11 @@ namespace QuizApp.Migrations
 
                     b.Property<int?>("QuizId")
                         .HasColumnType("int");
+
+                    b.Property<int?>("TimeLimitInSeconds")
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("TimeLimit");
 
                     b.Property<string>("Title")
                         .IsRequired()

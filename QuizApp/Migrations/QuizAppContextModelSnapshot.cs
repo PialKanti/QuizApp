@@ -178,6 +178,29 @@ namespace QuizApp.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("QuizApp.Entities.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("OptionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OptionId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answers");
+                });
+
             modelBuilder.Entity("QuizApp.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -255,7 +278,7 @@ namespace QuizApp.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "272a78e4-66ef-4f2a-a9f2-0a9f56220270",
+                            ConcurrencyStamp = "9dc78a91-3f59-4837-9eee-ac804d70ef00",
                             Email = "admin@test.com",
                             EmailConfirmed = false,
                             FirstName = "Default",
@@ -263,9 +286,9 @@ namespace QuizApp.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOHbwLsnOrLLD7Rd17F8qeYmOXcZa65gMj+Q+sMNGPcXkA0waa0J3/408w3UTvnNZA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIFpBuqptkwupq+bCjObKgocK0i9ZYtUjj3qNewPIatDx3fIWd/No56VNRaB4bHZBg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a56a646a-d252-4fb8-8e5e-80a8b44f3a7b",
+                            SecurityStamp = "f76b907d-7b16-4d2c-b6af-f1d2b3b5f1d3",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -389,6 +412,25 @@ namespace QuizApp.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("QuizApp.Entities.Answer", b =>
+                {
+                    b.HasOne("QuizApp.Entities.Option", "Option")
+                        .WithMany()
+                        .HasForeignKey("OptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("QuizApp.Entities.Question", "Question")
+                        .WithMany()
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Option");
+
+                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("QuizApp.Entities.Option", b =>

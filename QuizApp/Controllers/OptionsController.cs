@@ -42,6 +42,7 @@ namespace QuizApp.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult> Post([FromBody]Option option)
         {
+
             return Ok(await _repository.Insert(option));
         }
 

@@ -43,6 +43,7 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddScoped<IUserRepository<ApplicationUser>, UserRepository>();
 builder.Services.AddScoped<IRepository<Option>, OptionRepository>();
+builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
 
 var app = builder.Build();
 

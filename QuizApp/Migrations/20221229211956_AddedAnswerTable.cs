@@ -5,39 +5,28 @@
 namespace QuizApp.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedTimeLimitInQuestionTable : Migration
+    public partial class AddedAnswerTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "TimeLimit",
-                table: "Questions",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
-
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "b74ddd14-6340-4840-95c2-db12554843e5",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "272a78e4-66ef-4f2a-a9f2-0a9f56220270", "AQAAAAEAACcQAAAAEOHbwLsnOrLLD7Rd17F8qeYmOXcZa65gMj+Q+sMNGPcXkA0waa0J3/408w3UTvnNZA==", "a56a646a-d252-4fb8-8e5e-80a8b44f3a7b" });
+                values: new object[] { "57baf6aa-fefe-40ca-bf78-931a7e0f33f6", "AQAAAAEAACcQAAAAEEkW2nmv7UQKnztmF4McVGhWKwYPe9wZS5oDUPHI4xd1CgnNTPGNOxyIhWHrtreq6Q==", "0310cf55-602d-4082-bbef-92a86cd57d1f" });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "TimeLimit",
-                table: "Questions");
-
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "b74ddd14-6340-4840-95c2-db12554843e5",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "c3472ff3-8610-416a-be5d-571aa3b1259b", "AQAAAAEAACcQAAAAED+Yn0D5XqRgshB4+7wDcNl+IGuA9yK6WEJbg+se4l3Ap/z1DfhOgtGf1dsqaUhLxw==", "7dcd4b5a-b324-4f4f-a317-8213c15833ff" });
+                values: new object[] { "499f4562-40be-4553-9bc9-e33de208d67d", "AQAAAAEAACcQAAAAEJTYdjqwYygbRfv233H3Z1IMG+n6oI6Fq9KyVeRMGaXJ7l/BcUQeeo6hQsbiPTIQQQ==", "bbceb831-5572-4b78-989b-9cef8b08b99b" });
         }
     }
 }
