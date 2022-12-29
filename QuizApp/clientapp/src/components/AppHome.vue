@@ -1,6 +1,7 @@
 <template>
     <AppHeader Title="Quiz App" />
     <div class="container">
+        <router-view></router-view>
     </div>
 </template>
 
