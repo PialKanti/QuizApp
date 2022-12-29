@@ -9,6 +9,10 @@ namespace QuizApp.Data
     {
         public QuizAppContext(DbContextOptions<QuizAppContext> options) : base(options) { }
 
+        public DbSet<Quiz> Quizes { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Option> Options { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

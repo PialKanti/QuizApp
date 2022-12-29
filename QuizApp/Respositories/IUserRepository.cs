@@ -10,5 +10,6 @@ namespace QuizApp.Respositories
         Task<T> GetByEmail(string email);
         Task<IdentityResult> Insert(UserCreateDto dtoModel);
         Task<IEnumerable<T>> GetAll();
+        Task<IList<string>> GetUserRoles(T user);
     }
 }

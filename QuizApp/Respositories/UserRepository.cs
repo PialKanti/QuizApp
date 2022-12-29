@@ -40,5 +40,10 @@ namespace QuizApp.Respositories
             await _userManager.AddToRoleAsync(user, Constants.Roles.Participant);
             return identityResult;
         }
+
+        public async Task<IList<string>> GetUserRoles(ApplicationUser user)
+        {
+            return await _userManager.GetRolesAsync(user);
+        }
     }
 }
