@@ -5,7 +5,7 @@ using QuizApp.Entities;
 
 namespace QuizApp.Data
 {
-    public class QuizAppContext : IdentityDbContext<User>
+    public class QuizAppContext : IdentityDbContext<ApplicationUser>
     {
         public QuizAppContext(DbContextOptions<QuizAppContext> options) : base(options) { }
     }
