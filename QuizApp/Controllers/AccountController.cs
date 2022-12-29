@@ -32,5 +32,15 @@ namespace QuizApp.Controllers
             var result = await _manager.PasswordSignInAsync(user, dtoModel.Password, false, false);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("logout")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> Logout()
+        {
+            await _manager.SignOutAsync();
+            return Ok();
+        }
     }
 }

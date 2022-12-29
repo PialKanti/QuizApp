@@ -66,7 +66,6 @@ export default {
 
             if (responseResult.succeeded) {
                 this.$store.commit("setAuthentication", true);
-                console.log(this.$store.state.isAuthenticated);
                 this.$router.push({ name: 'Dashboard' });
             }
         }
