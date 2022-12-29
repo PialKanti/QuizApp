@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using QuizApp.Dtos;
 using QuizApp.Entities;
@@ -23,7 +22,7 @@ namespace QuizApp.Controllers
         [Route("login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> Login([FromBody] UserLoginDto dtoModel)
+        public async Task<ActionResult<Microsoft.AspNetCore.Identity.SignInResult>> Login([FromBody] UserLoginDto dtoModel)
         {
             ApplicationUser user = await _userRepository.GetByEmail(dtoModel.Email);
             if(user == null)

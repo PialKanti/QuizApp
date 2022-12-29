@@ -31,6 +31,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
+    console.log(store.state.isAuthenticated);
     if (!store.state.isAuthenticated && to.name !== 'Login' && to.name !== 'SignUp') {
         return { name: 'Login' }
     }
@@ -39,5 +40,6 @@ router.beforeEach(async (to) => {
 })
 
 const app = createApp(App)
-app.use(router, store)
+app.use(router)
+app.use(store)
 app.mount('#app')

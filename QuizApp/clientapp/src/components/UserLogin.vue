@@ -7,7 +7,7 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">Log in</h2>
-                                <form ref="userRegistrationForm" @submit.prevent="submitForm">
+                                <form ref="userLoginForm" @submit.prevent="submitForm">
                                     <div class="form-outline mb-4">
                                         <input type="email" id="email" class="form-control form-control-lg"
                                             v-model="email" />
@@ -43,6 +43,32 @@ export default {
         return {
             email: '',
             password: ''
+        }
+    },
+    methods: {
+        async submitForm() {
+            const data = JSON.stringify({
+                email: this.email,
+                password: this.password
+            });
+
+            const response = await fetch('api/Account/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: data
+            });
+
+            const responseResult = await response.json();
+
+            this.$refs.userLoginForm.reset();
+
+            if (responseResult.succeeded) {
+                this.$store.commit("setAuthentication", true);
+                console.log(this.$store.state.isAuthenticated);
+                this.$router.push({ name: 'Dashboard' });
+            }
         }
     }
 }
