@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuizApp.Data;
 
@@ -11,9 +12,11 @@ using QuizApp.Data;
 namespace QuizApp.Migrations
 {
     [DbContext(typeof(QuizAppContext))]
-    partial class QuizAppContextModelSnapshot : ModelSnapshot
+    [Migration("20221229144540_AddedQuizRelatedTables")]
+    partial class AddedQuizRelatedTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,7 +258,7 @@ namespace QuizApp.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "272a78e4-66ef-4f2a-a9f2-0a9f56220270",
+                            ConcurrencyStamp = "c3472ff3-8610-416a-be5d-571aa3b1259b",
                             Email = "admin@test.com",
                             EmailConfirmed = false,
                             FirstName = "Default",
@@ -263,9 +266,9 @@ namespace QuizApp.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOHbwLsnOrLLD7Rd17F8qeYmOXcZa65gMj+Q+sMNGPcXkA0waa0J3/408w3UTvnNZA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAED+Yn0D5XqRgshB4+7wDcNl+IGuA9yK6WEJbg+se4l3Ap/z1DfhOgtGf1dsqaUhLxw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a56a646a-d252-4fb8-8e5e-80a8b44f3a7b",
+                            SecurityStamp = "7dcd4b5a-b324-4f4f-a317-8213c15833ff",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -304,11 +307,6 @@ namespace QuizApp.Migrations
 
                     b.Property<int?>("QuizId")
                         .HasColumnType("int");
-
-                    b.Property<int?>("TimeLimitInSeconds")
-                        .IsRequired()
-                        .HasColumnType("int")
-                        .HasColumnName("TimeLimit");
 
                     b.Property<string>("Title")
                         .IsRequired()
