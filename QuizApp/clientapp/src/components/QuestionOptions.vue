@@ -12,7 +12,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <OptionsRow v-for="(item, index) in options" :key="index" :option="item" :index="index">
+                    <OptionsRow v-for="(item, index) in options" :key="index" :option="item" :index="index"
+                        @refresh-ui="refreshUI">
                     </OptionsRow>
                 </tbody>
             </table>

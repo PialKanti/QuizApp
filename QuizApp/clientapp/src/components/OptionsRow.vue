@@ -22,6 +22,7 @@ export default {
         index: Number,
         option: Object
     },
+    emits: ['refresh-ui'],
     methods: {
         async onDelete() {
             console.log("click");
@@ -29,11 +30,13 @@ export default {
             await fetch(url, {
                 method: 'DELETE'
             });
+
+            this.$emit('refresh-ui');
         },
-        onUpdate() {
-            this.$store.commit('setOption', this.option);
-            this.$router.push({ name: 'OptionForm' });
-        }
+        // onUpdate() {
+        //     this.$store.commit('setOption', this.option);
+        //     this.$router.push({ name: 'OptionForm' });
+        // }
     }
 
 }
