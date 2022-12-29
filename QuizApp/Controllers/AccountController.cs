@@ -42,5 +42,28 @@ namespace QuizApp.Controllers
             await _manager.SignOutAsync();
             return Ok();
         }
+
+        [HttpGet]
+        [Route("current-user")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<LoggedUserDto>> GetCurrentUser(string email)
+        {
+            if(string.IsNullOrEmpty(email))
+            {
+                return NotFound("Email can not be null or empty");
+            }
+            var user = await _userRepository.GetByEmail(email);
+            var userDto = new LoggedUserDto
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                UserName = user.UserName
+            };
+            var roles = await _userRepository.GetUserRoles(user);
+            userDto.RoleName = roles.FirstOrDefault();
+            return Ok(userDto);
+        }
     }
 }

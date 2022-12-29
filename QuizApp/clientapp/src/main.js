@@ -9,12 +9,16 @@ import UserLogin from "./components/UserLogin.vue"
 const store = createStore({
     state() {
         return {
-            isAuthenticated: false
+            isAuthenticated: false,
+            loggedUserEmail: ''
         }
     },
     mutations: {
         setAuthentication(state, status) {
             state.isAuthenticated = status;
+        },
+        setLoggedUserEmail(state, email) {
+            state.loggedUserEmail = email;
         }
     }
 })

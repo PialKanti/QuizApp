@@ -62,12 +62,13 @@ export default {
 
             const responseResult = await response.json();
 
-            this.$refs.userLoginForm.reset();
-
             if (responseResult.succeeded) {
                 this.$store.commit("setAuthentication", true);
+                this.$store.commit("setLoggedUserEmail", this.email);
                 this.$router.push({ name: 'Dashboard' });
             }
+
+            this.$refs.userLoginForm.reset();
         }
     }
 }
