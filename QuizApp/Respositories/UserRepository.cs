@@ -27,6 +27,11 @@ namespace QuizApp.Respositories
             return await _userManager.Users.ToListAsync();
         }
 
+        public async Task<ApplicationUser> GetByEmail(string email)
+        {
+            return await _userManager.FindByEmailAsync(email);
+        }
+
         public async Task<IdentityResult> Insert(UserCreateDto dtoModel)
         {
             ApplicationUser user = _mapper.Map<ApplicationUser>(dtoModel);

@@ -255,15 +255,17 @@ namespace QuizApp.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1714d9a2-29c7-4b79-a4f4-6539d092dc2b",
+                            ConcurrencyStamp = "be9d8733-2e8f-4999-b30a-9810b985e29a",
                             Email = "admin@test.com",
                             EmailConfirmed = false,
                             FirstName = "Default",
                             LastName = "Admin",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEFTgjUWOgQ3SW/AjFsRBbFCxBdYu3EuXNl6KQR+t2TQcA0bAu7gFWFjT6ayTrivYLA==",
+                            NormalizedEmail = "ADMIN@TEST.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEvSonPPelyaQ8azINp7V0LPlrmKknjZ4kL372qcPPkPlDsvoKwfaaMqlG+ndQqqMQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0f2e036b-28d8-42f2-9780-e1018d9733e4",
+                            SecurityStamp = "46acbe18-9f16-4074-bd09-b848ce059014",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });

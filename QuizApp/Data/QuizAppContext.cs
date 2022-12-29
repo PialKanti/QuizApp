@@ -25,7 +25,9 @@ namespace QuizApp.Data
                 FirstName = "Default",
                 LastName = "Admin",
                 UserName = "admin",
+                NormalizedUserName = "admin".ToUpper(),
                 Email = "admin@test.com",
+                NormalizedEmail = "admin@test.com".ToUpper(),
                 LockoutEnabled = false,
             };
 

@@ -17,6 +17,8 @@ builder.Services.AddDbContext<QuizAppContext>(options =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<QuizAppContext>();
 builder.Services.Configure<IdentityOptions>(options =>
 {
+    options.User.RequireUniqueEmail = true;
+
     options.Password.RequiredLength = 5;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredUniqueChars = 0;
