@@ -1,4 +1,5 @@
-﻿using QuizApp.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QuizApp.Data;
 using QuizApp.Dtos;
 using QuizApp.Entities;
 using System.Threading.Tasks;
@@ -32,6 +33,11 @@ namespace QuizApp.Respositories
             var valueTask = _dbContext.Quizes.Add(quiz);
             await _dbContext.SaveChangesAsync();
             return valueTask.Entity;
+        }
+
+        public async Task<IEnumerable<Quiz>> GetAll()
+        {
+            return await _dbContext.Quizes.Include(quiz => quiz.Questions).ToListAsync();
         }
     }
 }

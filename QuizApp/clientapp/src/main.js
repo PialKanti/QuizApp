@@ -9,6 +9,7 @@ import QuestionOptions from "./components/QuestionOptions.vue"
 import OptionsForm from "./components/OptionsForm.vue"
 import CreateQuestion from "./components/CreateQuestion.vue"
 import CreateQuiz from "./components/CreateQuiz.vue"
+import QuizDashboard from "./components/QuizDashboard.vue"
 
 const store = createStore({
     state() {
@@ -38,7 +39,8 @@ const routes = [
     { path: '/options', component: QuestionOptions, name: 'Option' },
     { path: '/options-form', component: OptionsForm, name: 'OptionForm' },
     { path: '/question-form', component: CreateQuestion, name: 'QuestionForm' },
-    { path: '/quiz-form', component: CreateQuiz, name: 'QuizForm' }
+    { path: '/quiz-form', component: CreateQuiz, name: 'QuizForm' },
+    { path: '/quizs', component: QuizDashboard, name: 'QuizDashboard' }
 ]
 
 const router = createRouter({

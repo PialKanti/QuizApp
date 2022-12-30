@@ -77,6 +77,7 @@ export default {
             });
 
             this.clearFormData();
+            this.$router.push({ name: 'QuizDashboard' });
         },
         clearFormData() {
             this.name = '',
