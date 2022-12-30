@@ -10,13 +10,15 @@ import OptionsForm from "./components/OptionsForm.vue"
 import CreateQuestion from "./components/CreateQuestion.vue"
 import CreateQuiz from "./components/CreateQuiz.vue"
 import QuizDashboard from "./components/QuizDashboard.vue"
+import QuizAnswer from "./components/QuizAnswer.vue"
 
 const store = createStore({
     state() {
         return {
             isAuthenticated: false,
             loggedUserEmail: '',
-            option: {}
+            option: {},
+            quiz: {}
         }
     },
     mutations: {
@@ -28,6 +30,9 @@ const store = createStore({
         },
         setOption(state, option) {
             state.option = option;
+        },
+        setQuiz(state, quiz) {
+            state.quiz = quiz;
         }
     }
 })
@@ -40,7 +45,8 @@ const routes = [
     { path: '/options-form', component: OptionsForm, name: 'OptionForm' },
     { path: '/question-form', component: CreateQuestion, name: 'QuestionForm' },
     { path: '/quiz-form', component: CreateQuiz, name: 'QuizForm' },
-    { path: '/quizs', component: QuizDashboard, name: 'QuizDashboard' }
+    { path: '/quizs', component: QuizDashboard, name: 'QuizDashboard' },
+    { path: '/quiz-answer', component: QuizAnswer, name: 'QuizAnswer' }
 ]
 
 const router = createRouter({

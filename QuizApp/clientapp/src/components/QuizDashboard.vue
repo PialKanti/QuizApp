@@ -5,7 +5,11 @@
             <div class="card-body">
                 <h6 class="card-title">Total Questions: {{ quiz.questions.length }}</h6>
                 <p class="card-text">Time limit: {{ getTotalTimeInMinutes(quiz) }} minutes</p>
-                <a href="#" class="btn btn-primary">Start Quiz</a>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="#" class="btn btn-primary">Start Quiz</a>
+                    <button class="btn btn-success" @click="seeAnswers(quiz)">See answers</button>
+                    <a href="#" class="btn btn-secondary">Score list</a>
+                </div>
             </div>
         </div>
     </div>
@@ -23,6 +27,7 @@ export default {
         };
     },
     async created() {
+        this.$store.commit('setQuiz', {});
         this.fetchQuizzes();
     },
     methods: {
@@ -30,8 +35,6 @@ export default {
             const response = await fetch('api/Quizs');
             const data = await response.json();
             this.quizzes = data;
-            console.log("fetching");
-            console.log(data);
         },
         getTotalTimeInMinutes(quiz) {
             var totalTime = 0;
@@ -40,6 +43,10 @@ export default {
             });
 
             return totalTime / 60;
+        },
+        seeAnswers(quiz) {
+            this.$store.commit('setQuiz', quiz);
+            this.$router.push({ name: 'QuizAnswer' });
         }
     }
 }

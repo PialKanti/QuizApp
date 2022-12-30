@@ -37,7 +37,8 @@ namespace QuizApp.Respositories
 
         public async Task<IEnumerable<Quiz>> GetAll()
         {
-            return await _dbContext.Quizes.Include(quiz => quiz.Questions).ToListAsync();
+            return await _dbContext.Quizes.Include(quiz => quiz.Questions)
+                .ThenInclude(question => question.Options).ToListAsync();
         }
     }
 }
