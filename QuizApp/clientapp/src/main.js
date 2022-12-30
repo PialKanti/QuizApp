@@ -11,6 +11,7 @@ import CreateQuestion from "./components/CreateQuestion.vue"
 import CreateQuiz from "./components/CreateQuiz.vue"
 import QuizDashboard from "./components/QuizDashboard.vue"
 import QuizAnswer from "./components/QuizAnswer.vue"
+import QuizExam from "./components/QuizExam.vue"
 
 const store = createStore({
     state() {
@@ -18,7 +19,8 @@ const store = createStore({
             isAuthenticated: false,
             loggedUserEmail: '',
             option: {},
-            quiz: {}
+            quiz: {},
+            ongoingQuiz: []
         }
     },
     mutations: {
@@ -33,6 +35,9 @@ const store = createStore({
         },
         setQuiz(state, quiz) {
             state.quiz = quiz;
+        },
+        setOngoingQuiz(state, ongoingQuiz) {
+            state.ongoingQuiz = ongoingQuiz;
         }
     }
 })
@@ -46,7 +51,8 @@ const routes = [
     { path: '/question-form', component: CreateQuestion, name: 'QuestionForm' },
     { path: '/quiz-form', component: CreateQuiz, name: 'QuizForm' },
     { path: '/quizs', component: QuizDashboard, name: 'QuizDashboard' },
-    { path: '/quiz-answer', component: QuizAnswer, name: 'QuizAnswer' }
+    { path: '/quiz-answer', component: QuizAnswer, name: 'QuizAnswer' },
+    { path: '/quiz-exam', component: QuizExam, name: 'QuizExam' }
 ]
 
 const router = createRouter({

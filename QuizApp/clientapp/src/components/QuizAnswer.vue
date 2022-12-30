@@ -8,7 +8,7 @@
                     :checked="option.id == question.answer.option.id" disabled>
                 <label class="form-check-label" for="exampleRadios1"
                     :class="{ highlight: option.id == question.answer.option.id }">
-                    {{ option.id }}
+                    {{ option.name }}
                 </label>
             </div>
         </div>

@@ -1,12 +1,12 @@
 <template>
-    <div class="card-deck mt-5" v-if="quizzes.length">
-        <div class="card" v-for="(quiz, index) in quizzes" :key="index">
+    <div class="mt-5" v-if="quizzes.length">
+        <div class="card mb-4" v-for="(quiz, index) in quizzes" :key="index">
             <h5 class="card-header">{{ quiz.name }}</h5>
             <div class="card-body">
                 <h6 class="card-title">Total Questions: {{ quiz.questions.length }}</h6>
                 <p class="card-text">Time limit: {{ getTotalTimeInMinutes(quiz) }} minutes</p>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="#" class="btn btn-primary">Start Quiz</a>
+                    <button class="btn btn-primary" @click="startQuiz(quiz)">Start Quiz</button>
                     <button class="btn btn-success" @click="seeAnswers(quiz)">See answers</button>
                     <a href="#" class="btn btn-secondary">Score list</a>
                 </div>
@@ -43,6 +43,10 @@ export default {
             });
 
             return totalTime / 60;
+        },
+        startQuiz(quiz) {
+            this.$store.commit('setQuiz', quiz);
+            this.$router.push({ name: 'QuizExam' });
         },
         seeAnswers(quiz) {
             this.$store.commit('setQuiz', quiz);

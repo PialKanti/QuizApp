@@ -45,6 +45,7 @@ builder.Services.AddScoped<IUserRepository<ApplicationUser>, UserRepository>();
 builder.Services.AddScoped<IRepository<Option>, OptionRepository>();
 builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
 builder.Services.AddScoped<IQuizRepository, QuizRepository>();
+builder.Services.AddScoped<IScoreRepository, ScoreRepository>();
 
 var app = builder.Build();
 

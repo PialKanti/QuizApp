@@ -40,5 +40,10 @@ namespace QuizApp.Respositories
             return await _dbContext.Quizes.Include(quiz => quiz.Questions)
                 .ThenInclude(question => question.Options).ToListAsync();
         }
+
+        public async Task<Quiz> Get(int id)
+        {
+            return await _dbContext.Quizes.FindAsync(id);
+        }
     }
 }
