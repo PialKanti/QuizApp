@@ -31,5 +31,20 @@ namespace QuizApp.Controllers
             var questions = await _repository.GetAll();
             return Ok(questions);
         }
+
+        [HttpGet("{id}/answer")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Answer>> GetAnswer(int id)
+        {
+            var question = await _repository.Get(id);
+            if(question == null)
+            {
+                return NotFound();
+            }
+
+            var answer = await _repository.GetAnswerAsync(question);
+            return Ok(answer);
+        }
     }
 }

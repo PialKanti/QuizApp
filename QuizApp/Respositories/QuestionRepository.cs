@@ -13,11 +13,6 @@ namespace QuizApp.Respositories
             _dbContext = dbContext;
         }
 
-        public Task<Question> Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<Question> Get(int id)
         {
             return await _dbContext.Questions.FindAsync(id);
@@ -56,9 +51,10 @@ namespace QuizApp.Respositories
             return valueTask.Entity;
         }
 
-        public Task Update(Question entityToUpdate)
+        public async Task<Answer> GetAnswerAsync(Question question)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Answers.Include(answer => answer.Option)
+                .Where(answer => answer.Question.Id == question.Id).FirstOrDefaultAsync();
         }
     }
 }
