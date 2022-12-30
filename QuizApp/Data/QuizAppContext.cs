@@ -13,6 +13,7 @@ namespace QuizApp.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Option> Options { get; set; }
+        public DbSet<Score> Scores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
