@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace QuizApp.Entities
+namespace QuizApp.Dtos
 {
-    public class Quiz : BaseEntity
+    public class QuizCreateDto
     {
         [Required]
-        [MaxLength(100)]
         public string? Name { get; set; }
         [Required]
-        public IList<Question>? Questions { get; set; }
+        public IEnumerable<int>? SelectedQuestionIds { get; set; }
     }
 }

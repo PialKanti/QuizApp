@@ -37,20 +37,6 @@
     emits: ['option-added'],
     methods: {
         async submitForm() {
-            // const data = JSON.stringify({
-            //     name: this.name
-            // });
-
-            // const response = await fetch('api/Options', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: data
-            // });
-
-            // const option = await response.json();
-
             this.$refs.optionsForm.reset();
             this.closeModal();
             this.$emit('option-added', this.name)

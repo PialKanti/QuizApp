@@ -26,7 +26,7 @@ namespace QuizApp.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<Option>>> Get()
+        public async Task<ActionResult<IEnumerable<Question>>> Get()
         {
             var questions = await _repository.GetAll();
             return Ok(questions);

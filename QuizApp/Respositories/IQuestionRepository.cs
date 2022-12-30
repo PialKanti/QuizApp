@@ -7,5 +7,6 @@ namespace QuizApp.Respositories
     {
         Task<Question> Insert(QuestionCreateDto dtoModel);
         Task<IEnumerable<Question>> GetAll();
+        Task<Question> Get(int id);
     }
 }

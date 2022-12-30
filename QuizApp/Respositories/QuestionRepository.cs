@@ -18,9 +18,9 @@ namespace QuizApp.Respositories
             throw new NotImplementedException();
         }
 
-        public Task<Question> Get(int id)
+        public async Task<Question> Get(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Questions.FindAsync(id);
         }
 
         public async Task<IEnumerable<Question>> GetAll()
