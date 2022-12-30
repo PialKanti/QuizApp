@@ -8,7 +8,7 @@
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button class="btn btn-primary" @click="startQuiz(quiz)">Start Quiz</button>
                     <button class="btn btn-success" @click="seeAnswers(quiz)">See answers</button>
-                    <a href="#" class="btn btn-secondary">Score list</a>
+                    <button class="btn btn-secondary" @click="seeScores(quiz)">Score list</button>
                 </div>
             </div>
         </div>
@@ -28,6 +28,7 @@ export default {
     },
     async created() {
         this.$store.commit('setQuiz', {});
+        this.$store.commit('setQuizId', '');
         this.fetchQuizzes();
     },
     methods: {
@@ -51,6 +52,10 @@ export default {
         seeAnswers(quiz) {
             this.$store.commit('setQuiz', quiz);
             this.$router.push({ name: 'QuizAnswer' });
+        },
+        seeScores(quiz) {
+            this.$store.commit('setQuizId', quiz.id);
+            this.$router.push({ name: 'QuizScoreList' });
         }
     }
 }

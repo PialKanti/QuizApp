@@ -57,5 +57,12 @@ namespace QuizApp.Respositories
 
             return totalScore;
         }
+
+        public async Task<IEnumerable<Score>> GetAllByQuiz(int quizId)
+        {
+            return await _dbContext.Scores.Include(score => score.Quiz)
+                .Include(score => score.User).
+                Where(score => score.Quiz.Id == quizId).ToListAsync();
+        }
     }
 }

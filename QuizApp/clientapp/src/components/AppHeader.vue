@@ -3,9 +3,6 @@
         <a class="navbar-brand" href="/">{{ Title }}</a>
         <div class="collapse navbar-collapse" id="navbarNav" v-if="this.$store.state.isAuthenticated">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Users</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/quizs" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -16,8 +13,14 @@
                         <a class="dropdown-item" href="/quiz-form">Create</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/question-form">Questions</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/quizs" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Questions
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/question-form">Create</a>
+                    </div>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" @submit.prevent="logout">
