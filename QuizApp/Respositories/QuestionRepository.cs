@@ -1,4 +1,5 @@
-﻿using QuizApp.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QuizApp.Data;
 using QuizApp.Dtos;
 using QuizApp.Entities;
 
@@ -22,9 +23,9 @@ namespace QuizApp.Respositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Question>> GetAll()
+        public async Task<IEnumerable<Question>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Questions.Include(question => question.Options).ToListAsync();
         }
 
         public async Task<Question> Insert(QuestionCreateDto dtoModel)

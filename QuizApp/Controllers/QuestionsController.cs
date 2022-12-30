@@ -23,5 +23,13 @@ namespace QuizApp.Controllers
         {
             return Ok(await _repository.Insert(dtoModel));
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<Option>>> Get()
+        {
+            var questions = await _repository.GetAll();
+            return Ok(questions);
+        }
     }
 }
