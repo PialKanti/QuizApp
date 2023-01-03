@@ -6,9 +6,7 @@ using System.Linq;
 
 namespace QuizApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class QuestionsController : ControllerBase
+    public class QuestionsController : ApiControllerBase
     {
         private readonly IQuestionRepository _repository;
 

@@ -7,9 +7,7 @@ using QuizApp.Respositories;
 
 namespace QuizApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class OptionsController : ControllerBase
+    public class OptionsController : ApiControllerBase
     {
         private IRepository<Option> _repository;
         public OptionsController(IRepository<Option> repository) 

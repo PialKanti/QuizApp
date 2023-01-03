@@ -6,9 +6,7 @@ using QuizApp.Respositories;
 
 namespace QuizApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController : ApiControllerBase
     {
         private IUserRepository<ApplicationUser> _userRepository;
         private SignInManager<ApplicationUser> _manager;

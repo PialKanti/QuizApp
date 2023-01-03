@@ -6,9 +6,7 @@ using QuizApp.Respositories;
 
 namespace QuizApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ScoresController : ControllerBase
+    public class ScoresController : ApiControllerBase
     {
         private IScoreRepository _repository;
 

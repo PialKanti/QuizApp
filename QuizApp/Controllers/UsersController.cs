@@ -9,9 +9,7 @@ using QuizApp.Respositories;
 
 namespace QuizApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : ApiControllerBase
     {
         private readonly IUserRepository<ApplicationUser> _repository;
 
